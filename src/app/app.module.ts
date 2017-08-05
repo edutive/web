@@ -1,37 +1,45 @@
-import { BrowserModule } from "@angular/platform-browser";
-import { NgModule } from "@angular/core";
-import { AngularFireModule } from "angularfire2";
-import { AngularFireDatabaseModule } from "angularfire2/database";
-import { AngularFireAuthModule } from "angularfire2/auth";
-import { FormsModule }   from '@angular/forms'; // <-- NgModel lives here
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
+
+import { AppRoutingModule } from './app-routing.module';
+
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { environment } from '../environments/environment';
 import { Provider } from '@angular/core';
-import { AuthService } from './auth.service';
+import { AuthService } from './auth/auth.service';
+import { AuthGuard } from './auth/auth-guard.service';
 
-
-import { AppComponent } from "./app.component";
+import { AppComponent } from './app.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { HomeComponent } from './home/home.component';
 
 export const firebaseConfig = {
-  apiKey: "AIzaSyAblFffPoJTp4GX3J3NK968hjm9_95PU8k",
-  authDomain: "psedu-c19d1.firebaseapp.com",
-  databaseURL: "https://psedu-c19d1.firebaseio.com",
-  projectId: "psedu-c19d1",
-  storageBucket: "psedu-c19d1.appspot.com",
-  messagingSenderId: "976897345430"
+  apiKey: 'AIzaSyAblFffPoJTp4GX3J3NK968hjm9_95PU8k',
+  authDomain: 'psedu-c19d1.firebaseapp.com',
+  databaseURL: 'https://psedu-c19d1.firebaseio.com',
+  projectId: 'psedu-c19d1',
+  storageBucket: 'psedu-c19d1.appspot.com',
+  messagingSenderId: '976897345430'
 };
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, LoginComponent, RegisterComponent, HomeComponent],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
+    AppRoutingModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
     AngularFireAuthModule
   ],
-  providers: [AuthService],
+  providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

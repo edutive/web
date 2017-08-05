@@ -1,0 +1,21 @@
+@import "../node_modules/bulma/sass/utilities/initial-variables";
+
+@import './variables.scss';
+
+$primary: $orange;
+
+@import '../node_modules/bulma/bulma.sass';
+@import '../node_modules/simple-line-icons/css/simple-line-icons.css';
+
+html,
+body {
+  background-color: #f8f8f8;
+}
+
+.edu-card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.15);
+
+  padding: 10px;
+}

@@ -1,26 +1,30 @@
-<h1 *ngIf="authService.user | async">Welcome {{ (authService.user | async)?.email }}!</h1>
-<div *ngIf="authService.user | async">
-  <input type="text" [(ngModel)]="firstName" placeholder="nome">
-  <input type="text" [(ngModel)]="lastName" placeholder="sobrenome">
+<div class="menu" *ngIf="authService.user">
+  <div class="container is-clearfix">
+    <div class="is-pulled-left brand">Edutive</div>
+    <div class="is-pulled-right user-area">
+      <div class="user-photo">{{authService.user.firstname.substr(0, 1) + authService.user.lastname.substr(0, 1)}}</div>
 
-  <button (click)="insert()">
-    salvar
-  </button>
+      <div class="dropdown" [class.is-active]="openMenu">
+        <div class="dropdown-trigger">
+          <button class="button" aria-haspopup="true" aria-controls="dropdown-menu" (click)="openMenu = !openMenu">
+            <span>{{authService.user.firstname + ' ' + authService.user.lastname}}</span>
+            <span class="icon is-small">
+              <i class="icon-arrow-down"></i>
+            </span>
+          </button>
+        </div>
+        <div class="dropdown-menu" id="dropdown-menu" role="menu">
+          <div class="dropdown-content">
+            <a href="javascript:void(0)" class="dropdown-item">Editar Perfil</a>
+            <hr class="dropdown-divider">
+            <a href="javascript:void(0)" class="dropdown-item" (click)="logout()">Sair</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
-<div *ngIf="!(authService.user | async)">
-  <input type="text" [(ngModel)]="email" placeholder="email">
-  <input type="password" [(ngModel)]="password" placeholder="senha">
-
-  <button (click)="signup()" [disabled]="!email || !password">
-    Signup
-  </button>
-
-  <button (click)="login()" [disabled]="!email || !password">
-    Login
-  </button>
+<div class="container">
+  <router-outlet></router-outlet>
 </div>
-
-<button (click)="logout()" *ngIf="authService.user | async">
-  Logout
-</button>

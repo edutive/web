@@ -1,46 +1,35 @@
-import { Component, OnInit, HostBinding } from "@angular/core";
-import {
-  AngularFireDatabase,
-  FirebaseListObservable
-} from "angularfire2/database";
-import { AngularFireAuth } from "angularfire2/auth";
-import { Observable } from "rxjs/Observable";
-import * as firebase from "firebase/app";
-import { Router } from "@angular/router";
-import { AuthService } from "./auth.service";
+import { Component, OnInit, HostBinding } from '@angular/core';
+import { Router } from '@angular/router';
+
+import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { Observable } from 'rxjs/Observable';
+import * as firebase from 'firebase/app';
+
+import { AuthService } from './auth/auth.service';
 
 @Component({
-  selector: "app-root",
-  templateUrl: "./app.component.html",
-  styleUrls: ["./app.component.css"]
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
-  email: string;
-  password: string;
-  firstName: string;
-  lastName: string;
+export class AppComponent implements OnInit {
+  openMenu: boolean = false;
 
-  constructor(public authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
-  signup() {
-    this.authService.signup(this.email, this.password);
-    this.email = this.password = "";
-  }
+  ngOnInit() {
+    this.openMenu = false;
 
-  login() {
-    this.authService.login(this.email, this.password);
-    this.email = this.password = "";
+    if (localStorage.getItem('user')) {
+      this.authService.user = JSON.parse(localStorage.getItem('user'));
+    }
   }
 
   logout() {
+    this.openMenu = false;
+
     this.authService.logout();
-  }
-
-  insert() {
-
-    console.log("this.firstName 1 " + this.firstName);
-    console.log("this.lastName 1 " + this.lastName);
-    
-    this.authService.insert(this.firstName, this.lastName);
+    this.router.navigate(['/login']);
   }
 }
