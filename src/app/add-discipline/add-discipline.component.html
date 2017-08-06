@@ -1,0 +1,36 @@
+<!-- <p>
+  add-discipline works!
+</p>
+<div class="control">
+	<a routerLink="/" class="button is-link">Back</a>
+</div> -->
+<div id="login" class="edu-card">
+    <div class="field">
+      <label class="label">Nome</label>
+      <div class="control">
+        <input class="input" type="text" [(ngModel)]="name">
+      </div>
+<!-- 
+    <div class="field">
+      <label class="label">Icon</label>
+      <div class="control">
+        <input class="input" type="text" [(ngModel)]="icon">
+      </div>
+    </div> -->
+
+    <div class="field is-grouped is-grouped-right">
+      <div class="control">
+        <a routerLink="/" class="button is-link">Voltar</a>
+      </div>
+      <div class="control">
+        <button class="button is-primary" (click)="addDiscipline()" [class.is-loading]="loading">Adicionar Disciplina</button>
+      </div>
+    </div>
+
+    <article class="message is-danger" *ngIf="error">
+      <div class="message-body">
+        {{error}}
+      </div>
+    </article>
+  </div>
+</div>
