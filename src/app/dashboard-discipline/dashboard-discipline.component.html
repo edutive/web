@@ -1,0 +1,64 @@
+<!-- <p>
+  add-discipline works!
+</p>
+<div class="control">
+	<a routerLink="/" class="button is-link">Back</a>
+</div> -->
+<!--<div ng-controller="AppCtrl" ng-cloak>
+  <md-content class="md-padding">
+    <md-nav-bar
+      md-selected-nav-item="currentNavItem"
+      nav-bar-aria-label="navigation links">
+      <md-nav-item routerLink="/" name="page1">
+        Page One
+      </md-nav-item>
+      <md-nav-item routerLink="/" name="page2">
+        Page Two
+      </md-nav-item>
+      <md-nav-item routerLink="/" name="page3">
+        Page Three
+      </md-nav-item>
+      <!-- these require actual routing with ui-router or ng-route, so they
+      won't work in the demo
+      <md-nav-item md-nav-href="#page4" name="page5">Page Four</md-nav-item>
+      <md-nav-item md-nav-sref="app.page5" name="page4">Page Five</md-nav-item>
+      You can also add options for the <code>ui-sref-opts</code> attribute.
+      <md-nav-item md-nav-sref="page6" sref-opts="{reload:true, notify:true}">
+        Page Six
+      </md-nav-item>
+      -->
+<!--</md-nav-bar>
+    <div class="ext-content">
+      External content for `<span>{{currentNavItem}}</span>`.
+    </div>
+
+    <md-checkbox ng-model="disableInkBar">Disable Ink Bar</md-checkbox>
+
+  </md-content>
+</div> -->
+
+
+<br>
+<div id="dashboard-discipline" class="edu-card">
+  <h3></h3>
+  <a class="button is-link" routerLink="/">Resumo</a>
+  <a class="button is-link" routerLink="/">Quizes</a>
+  <a class="button is-link" routerLink="/">Fórum</a>
+  <a class="button is-link" routerLink="/">Provas</a>
+  <a class="button is-link" routerLink="/">Conteúdo</a>
+  <a class="button is-link" routerLink="/">Alunos</a>
+
+
+
+  <div class="field is-grouped is-grouped-right">
+    <div class="control">
+      <a routerLink="/" class="button is-link">Voltar</a>
+    </div>
+  </div>
+
+  <article class="message is-danger" *ngIf="error">
+    <div class="message-body">
+      {{error}}
+    </div>
+  </article>
+</div>
