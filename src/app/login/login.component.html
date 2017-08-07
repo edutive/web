@@ -20,6 +20,7 @@
       </div>
       <div class="control">
         <button class="button is-primary" (click)="login()" [class.is-loading]="loading">Entrar</button>
+        <button class="button is-primary" (click)="loginFb()" [class.is-loading]="loading">Entrar com Facebook</button>
       </div>
     </div>
 
@@ -30,4 +31,3 @@
     </article>
   </div>
 </div>
-<a routerLink="/add-question" class="button is-link">Criar conta</a>
