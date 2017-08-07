@@ -5,7 +5,7 @@
 <h3>Disciplinas</h3>
 <div *ngFor="let item of items | async">
 	<div *ngIf="item.user === uid">
-      - <a class="button is-link" href="#">{{item.name}}</a>
+      - <a class="button is-link" routerLink="/dashboard-discipline">{{item.name}}</a>
     </div>
 </div>
 
