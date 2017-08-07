@@ -4,12 +4,12 @@
  -->
 <h3>Disciplinas</h3>
 <div *ngFor="let item of items | async">
-	<div *ngIf="item.user === uid">
-      - <a class="button is-link" routerLink="/dashboard-discipline">{{item.name}}</a>
-    </div>
+  <div *ngIf="item.user === uid">
+    - <a class="button is-link" [routerLink]="['discipline/', item.id]">{{item.name}}</a>
+  </div>
 </div>
 
 <br>
 <div class="control">
-	<a routerLink="/add-discipline" class="button is-link">Adicionar Disciplina</a>
+  <a routerLink="/discipline/add" class="button is-link">Adicionar Disciplina</a>
 </div>

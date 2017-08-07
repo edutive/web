@@ -43,26 +43,26 @@ export class LoginComponent implements OnInit {
   loginFb() {
     this.loading = true;
 
-    this.afAuth.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider())
-    .then(
-        (success) => {
-          const user = {
-            uid: this.afAuth.auth.currentUser.uid,
-            email: this.afAuth.auth.currentUser.email,
-            firstname: this.afAuth.auth.currentUser.displayName.split(' ')[0],
-            lastname: this.afAuth.auth.currentUser.displayName.split(' ')[1]
-          };
-          
-          this.authService.insert(user, (databaseUser, errorInsert) => {
-            this.authService.user = user;
-            localStorage.setItem('user', JSON.stringify(user));
-            this.router.navigate(['/']);
-          });
+    this.afAuth.auth
+      .signInWithPopup(new firebase.auth.FacebookAuthProvider())
+      .then(success => {
+        const user = {
+          uid: this.afAuth.auth.currentUser.uid,
+          email: this.afAuth.auth.currentUser.email,
+          firstname: this.afAuth.auth.currentUser.displayName.split(' ')[0],
+          lastname: this.afAuth.auth.currentUser.displayName.split(' ')[1]
+        };
+
+        this.authService.insert(user, (databaseUser, errorInsert) => {
+          this.authService.user = user;
+          localStorage.setItem('user', JSON.stringify(user));
           this.router.navigate(['/']);
-      }).catch(
-        (err) => {
-          this.loading = false;
-          this.error = err.message;
+        });
+        this.router.navigate(['/']);
+      })
+      .catch(err => {
+        this.loading = false;
+        this.error = err.message;
       });
   }
 }
