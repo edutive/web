@@ -19,7 +19,9 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
 import { AddDisciplineComponent } from './add-discipline/add-discipline.component';
+import { EditDisciplineComponent } from './edit-discipline/edit-discipline.component';
 import { DashboardDisciplineComponent } from './dashboard-discipline/dashboard-discipline.component';
+import { ListDisciplineComponent } from './list-discipline/list-discipline.component';
 
 export const firebaseConfig = {
   apiKey: 'AIzaSyAblFffPoJTp4GX3J3NK968hjm9_95PU8k',
@@ -31,7 +33,7 @@ export const firebaseConfig = {
 };
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, RegisterComponent, HomeComponent, AddDisciplineComponent, DashboardDisciplineComponent],
+  declarations: [AppComponent, LoginComponent, RegisterComponent, HomeComponent, AddDisciplineComponent, DashboardDisciplineComponent,EditDisciplineComponent, ListDisciplineComponent],
   imports: [
     BrowserModule,
     FormsModule,

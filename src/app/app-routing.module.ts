@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { AddDisciplineComponent } from './add-discipline/add-discipline.component';
+import { EditDisciplineComponent } from './edit-discipline/edit-discipline.component';
 import { DashboardDisciplineComponent } from './dashboard-discipline/dashboard-discipline.component';
 import { HomeComponent } from './home/home.component';
 import { AuthGuard } from './auth/auth-guard.service';
@@ -13,6 +14,7 @@ const appRoutes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'discipline/add', component: AddDisciplineComponent },
   { path: 'discipline/:id', component: DashboardDisciplineComponent },
+  { path: 'discipline/edit/:id', component: EditDisciplineComponent },
   { path: '', component: HomeComponent, canActivate: [AuthGuard] }
 ];
 
