@@ -1,10 +1,36 @@
-<div class="control">
-  <a routerLink="/discipline/add" class="button is-link">Adicionar Disciplina</a>
-</div>
+<a routerLink="/discipline/add" class="edu-card add-discipline">
+  <div class="center">
+    <i class="icon-plus"></i>
+    <span>Adicionar Disciplina</span>
+  </div>
+</a>
 
-<h3>Disciplinas</h3>
-<div *ngFor="let item of items | async">
-  <div *ngIf="item.user === uid">
-    - <a class="button is-link" [routerLink]="['discipline/', item.id]">{{item.name}}</a>
+<div class="discipline-list columns is-multiline">
+  <div class="column is-4" *ngFor="let item of items | async" (click)="openDiscipline(item.id)">
+    <div class="edu-card discipline is-paddingless">
+      <div class="discipline-top">
+        <i class="icon-{{item.icon ? item.icon : 'notebook'}}"></i>
+        <div class="tag is-current" *ngIf="item.status === 'current'">Atual</div>
+        <div class="tag is-finished" *ngIf="item.status === 'finished'">Finalizada</div>
+        <div class="tag is-cancelled" *ngIf="item.status === 'cancelled'">Cancelada</div>
+      </div>
+      <div class="discipline-body">
+        <div class="name">{{item.name}}</div>
+        <div class="discipline-icons">
+          <div class="icon">
+            <i class="icon-people"></i>
+            <span>10</span>
+          </div>
+          <div class="icon">
+            <i class="icon-question"></i>
+            <span>10</span>
+          </div>
+          <div class="icon">
+            <i class="icon-envelope-open"></i>
+            <span>10</span>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
