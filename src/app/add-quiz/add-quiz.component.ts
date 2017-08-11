@@ -21,16 +21,9 @@ export class AddQuizComponent implements OnInit {
 	courseID : any;
 	uid : any;
 
-	selectedQuestions = [];
+	selectedQuestions = {};
 
-  constructor(private af : AngularFireDatabase, private authService: AuthService, private router: Router) { 
-  	this.backString = router.url.split('/')[1] + "/" + router.url.split('/')[2] + "/quizes";
-
-  	this.courseID = router.url.split('/')[2];
-  	this.uid = this.authService.user.uid;
-
-  	this.items = af.list('/questions');
-  }
+  constructor(private af : AngularFireDatabase, private authService: AuthService, private router: Router) {}
 
   addQuiz() {
   	this.loading = true;
@@ -47,15 +40,31 @@ export class AddQuizComponent implements OnInit {
     });
 
     firebase.database().ref('quizesQuestions/' + this.id)
-      .set({
-      	0: true,
-    		4: true
-      }).then(value => {
+      .set(this.selectedQuestions).then(value => {
       	this.router.navigate(['/' + this.backString]);
     	});
   }
 
+  select(item: any) {
+  	this.selectedQuestions[item.$key] = !this.selectedQuestions[item.$key];
+
+  	if (!this.selectedQuestions[item.$key]) {
+  		delete this.selectedQuestions[item.$key];
+  	}
+  }
+
   ngOnInit() {
+  	this.backString = this.router.url.split('/')[1] + "/" + this.router.url.split('/')[2] + "/quizes";
+
+  	this.courseID = this.router.url.split('/')[2];
+  	this.uid = this.authService.user.uid;
+
+  	this.items = this.af.list('/questions', {
+      query: {
+        orderByChild: 'subject',
+        equalTo: this.courseID
+      }
+    });
   }
 
 }

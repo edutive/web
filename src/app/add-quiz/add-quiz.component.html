@@ -8,10 +8,8 @@
   </div>
 
  	<form action="" *ngFor="let item of items | async">
-	<input type="checkbox" name="{{item.$key}}" value="{{item.$key}}"> {{item.title}}
+		<input type="checkbox" [name]="item.$key" [value]="item.$key" (change)="select(item)"> {{item.title}}
 	</form>
-
-
 
   
 	<div class="field is-grouped is-grouped-right">

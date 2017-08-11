@@ -14,16 +14,21 @@ export class QuizesComponent implements OnInit {
 	backString : any;
 
 	items: FirebaseListObservable<any>;
-	course: any;
+	courseID: any;
 
-  constructor(private af : AngularFireDatabase, private authService: AuthService, private router: Router) { 
-  	this.backString = router.url.split('/')[1] + "/" + router.url.split('/')[2];
-
-  	this.course = router.url.split('/')[2];
-  	this.items = af.list('/quizes');
-  }
+  constructor(private af : AngularFireDatabase, private authService: AuthService, private router: Router) {}
 
   ngOnInit() {
+  	this.backString = this.router.url.split('/')[1] + "/" + this.router.url.split('/')[2];
+
+  	this.courseID = this.router.url.split('/')[2];
+  	
+  	this.items = this.af.list('/quizes', {
+      query: {
+        orderByChild: 'subject',
+        equalTo: this.courseID
+      }
+    });
   }
 
 }
