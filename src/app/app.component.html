@@ -1,7 +1,10 @@
 <div class="menu" *ngIf="authService.user">
-  <div class="container is-clearfix">
-    <div class="is-pulled-left brand">Edutive</div>
-    <div class="is-pulled-right user-area">
+  <div class="container">
+    <div class="brand">
+      <a routerLink="/">Edutive</a>
+      <div *ngIf="discipline">{{discipline.name}}</div>
+    </div>
+    <div class="user-area">
       <div class="user-photo">{{authService.user.firstname.substr(0, 1) + authService.user.lastname.substr(0, 1)}}</div>
 
       <div class="dropdown" [class.is-active]="openMenu">
@@ -21,6 +24,17 @@
           </div>
         </div>
       </div>
+    </div>
+  </div>
+
+  <div class="container sub-menu-container" *ngIf="discipline">
+    <div class="sub-menu">
+      <a routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" [routerLink]="['/discipline/', disciplineID]"><i class="icon-chart"></i> Resumo</a>
+      <a routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" [routerLink]="['/discipline/', disciplineID, 'quizes']"><i class="icon-question"></i> Quizes</a>
+      <a routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" [routerLink]="['/discipline/', disciplineID, 'forum']"><i class="icon-envelope-open"></i> Fórum</a>
+      <a routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" [routerLink]="['/discipline/', disciplineID, 'contents']"><i class="icon-calculator"></i> Conteúdo</a>
+      <a routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" [routerLink]="['/discipline/', disciplineID, 'students']"><i class="icon-people"></i> Alunos</a>
+      <a routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" [routerLink]="['/discipline/', disciplineID, 'edit']"><i class="icon-settings"></i> Editar</a>
     </div>
   </div>
 </div>

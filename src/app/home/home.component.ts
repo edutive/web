@@ -9,17 +9,23 @@ import { AuthService } from '../auth/auth.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  uid: any;
+  items: FirebaseListObservable<any>;
 
-	uid: any;
-	items: FirebaseListObservable<any>;
-
-  constructor(private af : AngularFireDatabase, private authService: AuthService, private router: Router) {
-  	this.uid = this.authService.user.uid;
-
-  	this.items = af.list('/subjects');
+  constructor(private af: AngularFireDatabase, private authService: AuthService, private router: Router) {
+    this.uid = this.authService.user.uid;
   }
 
+  ngOnInit() {
+    this.items = this.af.list('/subjects', {
+      query: {
+        orderByChild: 'user',
+        equalTo: this.uid
+      }
+    });
+  }
 
-
-  ngOnInit() {}
+  openDiscipline(id: string) {
+    this.router.navigate(['discipline/', id]);
+  }
 }

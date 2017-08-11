@@ -2,16 +2,32 @@
 
 .menu {
   background-color: #fff;
-  height: 50px;
+  min-height: 50px;
+
+  margin-bottom: 20px;
 
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
 
   .container {
     height: 100%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 
   .brand {
-    line-height: 50px;
+    display: flex;
+    min-height: 50px;
+
+    align-items: center;
+
+    div {
+      margin-left: 10px;
+      padding-left: 10px;
+
+      border-left: 1px solid #eee;
+    }
   }
 
   .user-area {
@@ -42,6 +58,38 @@
     .is-small {
       i {
         font-size: 12px;
+      }
+    }
+  }
+
+  .sub-menu-container {
+    border-top: 1px solid #eee;
+    padding-top: 10px;
+
+    .sub-menu {
+      font-size: 14px;
+
+      margin-bottom: 10px;
+
+      a {
+        color: $blue;
+
+        padding: 5px 10px;
+
+        border-right: 1px solid #eee;
+
+        &:first-child {
+          padding-left: 0;
+        }
+
+        &:last-child {
+          border: none;
+        }
+
+        &.active,
+        &:hover {
+          color: $orange;
+        }
       }
     }
   }
