@@ -21,6 +21,8 @@ import { HomeComponent } from './home/home.component';
 import { AddDisciplineComponent } from './add-discipline/add-discipline.component';
 import { EditDisciplineComponent } from './edit-discipline/edit-discipline.component';
 import { DashboardDisciplineComponent } from './dashboard-discipline/dashboard-discipline.component';
+import { QuizesComponent } from './quizes/quizes.component';
+import { AddQuizComponent } from './add-quiz/add-quiz.component';
 import { ListDisciplineComponent } from './list-discipline/list-discipline.component';
 
 export const firebaseConfig = {
@@ -33,7 +35,7 @@ export const firebaseConfig = {
 };
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, RegisterComponent, HomeComponent, AddDisciplineComponent, DashboardDisciplineComponent,EditDisciplineComponent, ListDisciplineComponent],
+  declarations: [AppComponent, LoginComponent, RegisterComponent, HomeComponent, AddDisciplineComponent, DashboardDisciplineComponent, QuizesComponent, AddQuizComponent, EditDisciplineComponent, ListDisciplineComponent],
   imports: [
     BrowserModule,
     FormsModule,
