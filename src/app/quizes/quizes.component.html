@@ -1,0 +1,22 @@
+<br>
+<div id="dashboard-discipline" class="edu-card">
+  <h3></h3>
+  
+  <div *ngFor="let item of items | async">
+	  <div *ngIf="item.subject === course">
+	    - <a class="button is-link">{{item.name}}</a>
+	  </div>
+  </div>
+  <div class="field is-grouped is-grouped-right">
+    <div class="control">
+    	<a routerLink="add-quiz" class="button is-primary">Adicionar Quiz</a>
+      <a routerLink="/{{backString}}" class="button is-link">Voltar</a>
+    </div>
+  </div>
+
+  <article class="message is-danger" *ngIf="error">
+    <div class="message-body">
+      {{error}}
+    </div>
+  </article>
+</div>

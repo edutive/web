@@ -7,12 +7,16 @@ import { AddDisciplineComponent } from './add-discipline/add-discipline.componen
 import { DashboardDisciplineComponent } from './dashboard-discipline/dashboard-discipline.component';
 import { HomeComponent } from './home/home.component';
 import { AuthGuard } from './auth/auth-guard.service';
+import { QuizesComponent } from './quizes/quizes.component';
+import { AddQuizComponent } from './add-quiz/add-quiz.component';
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'discipline/add', component: AddDisciplineComponent },
   { path: 'discipline/:id', component: DashboardDisciplineComponent },
+  { path: 'discipline/:id/quizes', component: QuizesComponent },
+  { path: 'discipline/:id/quizes/add-quiz', component: AddQuizComponent },
   { path: '', component: HomeComponent, canActivate: [AuthGuard] }
 ];
 
