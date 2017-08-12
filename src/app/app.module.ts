@@ -26,6 +26,11 @@ import { QuizesComponent } from './quizes/quizes.component';
 import { AddQuizComponent } from './add-quiz/add-quiz.component';
 import { ListDisciplineComponent } from './list-discipline/list-discipline.component';
 import { IconSelectorComponent } from './add-discipline/icon-selector/icon-selector.component';
+import { ForumComponent } from './forum/forum.component';
+import { CategoryComponent } from './category/category.component';
+import { TopicComponent } from './topic/topic.component';
+import { AddCategoryComponent } from './add-category/add-category.component';
+import { AddTopicComponent } from './add-topic/add-topic.component';
 
 export const firebaseConfig = {
   apiKey: 'AIzaSyAblFffPoJTp4GX3J3NK968hjm9_95PU8k',
@@ -49,7 +54,12 @@ export const firebaseConfig = {
     EditDisciplineComponent,
     ListDisciplineComponent,
     IconSelectorComponent,
-    ClickOutsideDirective
+    ClickOutsideDirective,
+    ForumComponent,
+    CategoryComponent,
+    TopicComponent,
+    AddCategoryComponent,
+    AddTopicComponent
   ],
   imports: [
     BrowserModule,
