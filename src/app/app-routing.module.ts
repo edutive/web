@@ -15,6 +15,8 @@ import { CategoryComponent } from './category/category.component';
 import { TopicComponent } from './topic/topic.component';
 import { AddCategoryComponent } from './add-category/add-category.component';
 import { AddTopicComponent } from './add-topic/add-topic.component';
+import { ContentsComponent } from './contents/contents.component';
+import { AddContentComponent } from './add-content/add-content.component';
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -29,6 +31,8 @@ const appRoutes: Routes = [
   { path: 'discipline/:id/forum/category/:id', component: CategoryComponent, canActivate: [AuthGuard] },
   { path: 'discipline/:id/forum/category/:id/add-topic', component: AddTopicComponent, canActivate: [AuthGuard] },
   { path: 'discipline/:id/forum/category/:id/topic/:id', component: TopicComponent, canActivate: [AuthGuard] },
+  { path: 'discipline/:id/contents', component: ContentsComponent, canActivate: [AuthGuard] },
+  { path: 'discipline/:id/contents/add-content', component: AddContentComponent, canActivate: [AuthGuard] },
   { path: '', component: HomeComponent, canActivate: [AuthGuard] }
 ];
 

@@ -31,6 +31,8 @@ import { CategoryComponent } from './category/category.component';
 import { TopicComponent } from './topic/topic.component';
 import { AddCategoryComponent } from './add-category/add-category.component';
 import { AddTopicComponent } from './add-topic/add-topic.component';
+import { ContentsComponent } from './contents/contents.component';
+import { AddContentComponent } from './add-content/add-content.component';
 
 export const firebaseConfig = {
   apiKey: 'AIzaSyAblFffPoJTp4GX3J3NK968hjm9_95PU8k',
@@ -59,7 +61,9 @@ export const firebaseConfig = {
     CategoryComponent,
     TopicComponent,
     AddCategoryComponent,
-    AddTopicComponent
+    AddTopicComponent,
+    ContentsComponent,
+    AddContentComponent,
   ],
   imports: [
     BrowserModule,

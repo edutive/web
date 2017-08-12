@@ -1,0 +1,53 @@
+<br>
+<div id="dashboard-discipline" class="edu-card">
+  <h3></h3>
+
+  <label class="label">Pergunta</label>
+  <div class="control">
+    <input class="input" type="text" [(ngModel)]="question">
+  </div>
+  <label class="label">Opção A</label>
+  <div class="control">
+    <input class="input" type="text" [(ngModel)]="option1">
+  </div>
+  <label class="label">Opção B</label>
+  <div class="control">
+    <input class="input" type="text" [(ngModel)]="option2">
+  </div>
+  <label class="label">Opção C</label>
+  <div class="control">
+    <input class="input" type="text" [(ngModel)]="option3">
+  </div>
+  <label class="label">Opção D</label>
+  <div class="control">
+    <input class="input" type="text" [(ngModel)]="option4">
+  </div>
+  <label class="label">Resposta Correta</label>
+  <div class="control">
+    <!-- <select [(ngModel)]="correctOption">
+      <option [ngValue]="a">A</option>
+      <option [ngValue]="b">B</option>
+      <option [ngValue]="c">C</option>
+      <option [ngValue]="d">D</option>
+    </select> -->
+    <input class="input" type="text" [(ngModel)]="correctOption">
+  </div>
+
+  <form action="" *ngFor="let item of items | async">
+    <input type="checkbox" [name]="item.$key" [value]="item.$key" (change)="select(item)"> {{item.title}}
+  </form>
+
+
+  <div class="field is-grouped is-grouped-right">
+    <div class="control">
+      <button class="button is-primary" (click)="addContent()" [class.is-loading]="loading">Salvar Pergunta</button>
+      <a routerLink="/{{backString}}" class="button is-link">Voltar</a>
+    </div>
+  </div>
+
+  <article class="message is-danger" *ngIf="error">
+    <div class="message-body">
+      {{error}}
+    </div>
+  </article>
+</div>
