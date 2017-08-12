@@ -45,6 +45,12 @@ export class AppComponent implements OnInit {
     }
   }
 
+  onClickOutside(event: Object) {
+    if (event && event['value'] === true) {
+      this.openMenu = false;
+    }
+  }
+
   logout() {
     this.openMenu = false;
 

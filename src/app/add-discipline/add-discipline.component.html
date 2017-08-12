@@ -1,36 +1,48 @@
-<!-- <p>
-  add-discipline works!
-</p>
-<div class="control">
-	<a routerLink="/" class="button is-link">Back</a>
-</div> -->
 <div id="login" class="edu-card">
-    <div class="field">
-      <label class="label">Nome</label>
-      <div class="control">
-        <input class="input" type="text" [(ngModel)]="name">
-      </div>
-<!-- 
-    <div class="field">
-      <label class="label">Icon</label>
-      <div class="control">
-        <input class="input" type="text" [(ngModel)]="icon">
-      </div>
-    </div> -->
+  <div class="field">
+    <label class="label">Nome</label>
+    <div class="control">
+      <input class="input" type="text" [(ngModel)]="name">
+    </div>
+  </div>
 
-    <div class="field is-grouped is-grouped-right">
-      <div class="control">
-        <a routerLink="/" class="button is-link">Voltar</a>
-      </div>
-      <div class="control">
-        <button class="button is-primary" (click)="addDiscipline()" [class.is-loading]="loading">Adicionar Disciplina</button>
+  <div class="columns">
+    <div class="column is-2">
+      <div class="field">
+        <label class="label">Ícone</label>
+        <div class="control">
+          <i [class]="'big-icon icon-' + icon.selected"></i>
+        </div>
       </div>
     </div>
-
-    <article class="message is-danger" *ngIf="error">
-      <div class="message-body">
-        {{error}}
+    <div class="column">
+      <div class="dropdown" [class.is-active]="openIcons" click-outside (clickOutside)="onClickOutside($event)">
+        <div class="dropdown-trigger">
+          <button class="button is-info" aria-haspopup="true" aria-controls="dropdown-menu2" (click)="openIcons = !openIcons">
+            <span>Ícone</span>
+            <span class="icon is-small">
+              <i class="icon-arrow-down"></i>
+            </span>
+          </button>
+        </div>
+        <div class="dropdown-menu dropdown-icon" id="dropdown-menu2" role="menu">
+          <div class="dropdown-content">
+            <app-icon-selector #icon></app-icon-selector>
+          </div>
+        </div>
       </div>
-    </article>
+    </div>
   </div>
+
+  <div class="field is-grouped is-grouped-right">
+    <div class="control">
+      <button class="button is-primary" (click)="addDiscipline()" [class.is-loading]="loading" [disabled]="!name">Adicionar Disciplina</button>
+    </div>
+  </div>
+
+  <article class="message is-danger" *ngIf="error">
+    <div class="message-body">
+      {{error}}
+    </div>
+  </article>
 </div>

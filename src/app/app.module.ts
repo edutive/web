@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
+import { ClickOutsideDirective } from './util/click-outside.directive';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AngularFireModule } from 'angularfire2';
@@ -24,6 +25,7 @@ import { DashboardDisciplineComponent } from './dashboard-discipline/dashboard-d
 import { QuizesComponent } from './quizes/quizes.component';
 import { AddQuizComponent } from './add-quiz/add-quiz.component';
 import { ListDisciplineComponent } from './list-discipline/list-discipline.component';
+import { IconSelectorComponent } from './add-discipline/icon-selector/icon-selector.component';
 
 export const firebaseConfig = {
   apiKey: 'AIzaSyAblFffPoJTp4GX3J3NK968hjm9_95PU8k',
@@ -35,7 +37,20 @@ export const firebaseConfig = {
 };
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, RegisterComponent, HomeComponent, AddDisciplineComponent, DashboardDisciplineComponent, QuizesComponent, AddQuizComponent, EditDisciplineComponent, ListDisciplineComponent],
+  declarations: [
+    AppComponent,
+    LoginComponent,
+    RegisterComponent,
+    HomeComponent,
+    AddDisciplineComponent,
+    DashboardDisciplineComponent,
+    QuizesComponent,
+    AddQuizComponent,
+    EditDisciplineComponent,
+    ListDisciplineComponent,
+    IconSelectorComponent,
+    ClickOutsideDirective
+  ],
   imports: [
     BrowserModule,
     FormsModule,

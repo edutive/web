@@ -1,43 +1,65 @@
-<div id="login" class="edu-card" *ngIf="discipline">
+<div id="login" class="edu-card">
   <div class="field">
     <label class="label">Nome</label>
-    <div class="control">
+    <div class="control" *ngIf="discipline">
       <input class="input" type="text" [(ngModel)]="discipline.name">
     </div>
-    <div class="">
-      <label class="label">Status</label>
-      <div class="control">
-        <select [(ngModel)]="discipline.status">
+  </div>
+
+  <div class="field">
+    <label class="label">Status</label>
+    <div class="control" *ngIf="discipline">
+      <select class="select" [(ngModel)]="discipline.status">
           <option value="current">Atual</option>
           <option value="finished">Finalizada</option>
           <option value="cancelled">Cancelada</option>
         </select>
-      </div>
-      <!--
-    <div class="field">
-      <label class="label">Icon</label>
-      <div class="control">
-        <input class="input" type="text" [(ngModel)]="icon">
-      </div>
-    </div> -->
-
-      <div class="field is-grouped is-grouped-right">
-        <div class="control">
-          <button class="button is-primary" [class.is-loading]="loading" (click)="editDiscipline()">Editar Disciplina</button>
-        </div>
-      </div>
-
-      <article class="message is-success" *ngIf="success">
-        <div class="message-body">
-          {{success}}
-        </div>
-      </article>
-
-      <article class="message is-danger" *ngIf="error">
-        <div class="message-body">
-          {{error}}
-        </div>
-      </article>
     </div>
   </div>
+
+  <div class="columns">
+    <div class="column is-2">
+      <div class="field">
+        <label class="label">Ícone</label>
+        <div class="control">
+          <i [class]="'big-icon icon-' + icon.selected"></i>
+        </div>
+      </div>
+    </div>
+    <div class="column">
+      <div class="dropdown" [class.is-active]="openIcons" click-outside (clickOutside)="onClickOutside($event)">
+        <div class="dropdown-trigger">
+          <button class="button is-info" aria-haspopup="true" aria-controls="dropdown-menu2" (click)="openIcons = !openIcons">
+              <span>Ícone</span>
+              <span class="icon is-small">
+                <i class="icon-arrow-down"></i>
+              </span>
+            </button>
+        </div>
+        <div class="dropdown-menu dropdown-icon" id="dropdown-menu2" role="menu">
+          <div class="dropdown-content">
+            <app-icon-selector #icon></app-icon-selector>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="field is-grouped is-grouped-right">
+    <div class="control">
+      <button class="button is-primary" [class.is-loading]="loading" (click)="editDiscipline()">Editar Disciplina</button>
+    </div>
+  </div>
+
+  <article class="message is-success" *ngIf="success">
+    <div class="message-body">
+      {{success}}
+    </div>
+  </article>
+
+  <article class="message is-danger" *ngIf="error">
+    <div class="message-body">
+      {{error}}
+    </div>
+  </article>
 </div>

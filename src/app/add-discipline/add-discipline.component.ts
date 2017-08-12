@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { AuthService } from '../auth/auth.service';
 import * as firebase from 'firebase/app';
 import { Router } from '@angular/router';
+import { IconSelectorComponent } from './icon-selector/icon-selector.component';
 
 @Component({
   selector: 'app-add-discipline',
@@ -9,40 +10,46 @@ import { Router } from '@angular/router';
   styleUrls: ['./add-discipline.component.scss']
 })
 export class AddDisciplineComponent implements OnInit {
+  name: string;
+  id: any;
+  uid: any;
 
-	icon: string;
-	name: string;
-	id: any;
-	uid: any;
-
-	loading: boolean = false;
+  loading: boolean = false;
+  openIcons: boolean = false;
 
   error: string;
 
-  constructor(private authService: AuthService, private router: Router) { }
+  @ViewChild('icon') icon: IconSelectorComponent;
 
-  ngOnInit() {
-  }
+  constructor(private authService: AuthService, private router: Router) {}
+
+  ngOnInit() {}
 
   addDiscipline() {
-  	this.loading = true;
+    this.loading = true;
 
-  	this.icon = "notebook";
+    this.uid = this.authService.user.uid;
 
-  	this.uid = this.authService.user.uid;
+    const ref = firebase.database().ref('subjects').push();
 
-  	const ref = firebase.database().ref('subjects').push();
+    this.id = ref.key;
 
-  	this.id = ref.key;
+    ref
+      .set({
+        icon: this.icon.selected,
+        id: this.id,
+        name: this.name,
+        user: this.uid,
+        status: 'current'
+      })
+      .then(value => {
+        this.router.navigate(['/']);
+      });
+  }
 
-  	ref.set({
-    	icon: this.icon,
-    	id: this.id,
-    	name: this.name,
-    	user: this.uid
-    }).then(value => {
-      this.router.navigate(['/']);
-    });;
+  onClickOutside(event: Object) {
+    if (event && event['value'] === true) {
+      this.openIcons = false;
+    }
   }
 }
-
