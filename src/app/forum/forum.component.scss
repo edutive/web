@@ -1,0 +1,43 @@
+@import '../../variables.scss';
+
+.add-forum {
+  width: 180px;
+
+  display: flex;
+  flex-direction: column;
+
+  .center {
+    text-align: center;
+
+    font-size: 14px;
+  }
+
+  &:hover {
+    color: $pink;
+  }
+}
+
+.forum-list {
+  margin-top: 20px;
+
+  .forum {
+    cursor: pointer;
+
+    .forum-body {
+      padding: 20px;
+
+      .name {
+        color: $orange;
+        font-size: 20px;
+      }
+    }
+
+    &:hover {
+      .forum-body {
+        .name {
+          color: $pink;
+        }
+      }
+    }
+  }
+}

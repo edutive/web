@@ -1,17 +1,16 @@
-<br>
 <div id="dashboard-discipline" class="edu-card">
-  <h3></h3>
-
-  <label class="label">Nome</label>
-  <div class="control">
-    <input class="input" type="text" [(ngModel)]="name">
-  </div>
-  
-  <br>
-	<div class="field is-grouped is-grouped-right">
+  <div class="field">
+    <label class="label">Nome</label>
     <div class="control">
-    <button class="button is-primary" (click)="addCategory()" [class.is-loading]="loading">Salvar Categoria</button>
-      <a routerLink="/{{backString}}" class="button is-link">Voltar</a>
+      <input class="input" type="text" [(ngModel)]="name">
+    </div>
+  </div>
+
+  <br>
+  <div class="field is-grouped is-grouped-right">
+    <div class="control">
+      <a routerLink="/{{backString}}" class="button is-link">Cancelar</a>
+      <button class="button is-primary" (click)="addCategory()" [class.is-loading]="loading">Salvar</button>
     </div>
   </div>
 

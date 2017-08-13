@@ -1,0 +1,43 @@
+@import '../../variables.scss';
+
+.add-content {
+  width: 160px;
+
+  display: flex;
+  flex-direction: column;
+
+  .center {
+    text-align: center;
+
+    font-size: 14px;
+  }
+
+  &:hover {
+    color: $pink;
+  }
+}
+
+.content-list {
+  margin-top: 20px;
+
+  .content {
+    cursor: pointer;
+
+    .content-body {
+      padding: 20px;
+
+      .name {
+        color: $orange;
+        font-size: 20px;
+      }
+    }
+
+    &:hover {
+      .content-body {
+        .name {
+          color: $pink;
+        }
+      }
+    }
+  }
+}

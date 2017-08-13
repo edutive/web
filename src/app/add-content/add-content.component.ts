@@ -2,102 +2,89 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth/auth.service';
 import * as firebase from 'firebase/app';
 import { FirebaseListObservable, AngularFireDatabase } from 'angularfire2/database';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
-	selector: 'app-add-content',
-	templateUrl: './add-content.component.html',
-	styleUrls: ['./add-content.component.scss']
+  selector: 'app-add-content',
+  templateUrl: './add-content.component.html',
+  styleUrls: ['./add-content.component.scss']
 })
 export class AddContentComponent implements OnInit {
+  loading: boolean = false;
 
-	loading: boolean = false;
+  backString: any;
+  items: FirebaseListObservable<any>;
 
-	backString: any;
-	items: FirebaseListObservable<any>;
+  id: any;
+  question: any;
+  option1: any;
+  option2: any;
+  option3: any;
+  option4: any;
+  correctOption: any = 'a';
 
-	id: any;
-	question: any;
-	option1: any;
-	option2: any;
-	option3: any;
-	option4: any;
-	correctOption: any;
+  courseID: any;
 
-	courseID: any;
-	uid: any;
+  selectedQuestions = {};
 
-	selectedQuestions = {};
+  constructor(private af: AngularFireDatabase, private authService: AuthService, private router: Router, private route: ActivatedRoute) {}
 
-	constructor(private af: AngularFireDatabase, private authService: AuthService, private router: Router) { }
+  ngOnInit() {
+    this.backString = this.router.url.split('/')[1] + '/' + this.router.url.split('/')[2] + '/contents';
 
-	addContent() {
-		console.log("add content");
-		this.loading = true;
+    this.route.params.subscribe(param => {
+      this.courseID = param['id'];
 
-		/*const ref = firebase.database().ref('quizes').push();
+      if (param['content']) {
+        this.id = param['content'];
+        this.af.object('/questions/' + param['content']).subscribe(question => {
+          this.question = question.question;
+          this.option1 = question.option1;
+          this.option2 = question.option2;
+          this.option3 = question.option3;
+          this.option4 = question.option4;
+          this.correctOption = question.correctOption;
+        });
+      }
+    });
 
-		this.id = ref.key;
+    this.items = this.af.list('/questions', {
+      query: {
+        orderByChild: 'subject',
+        equalTo: this.courseID
+      }
+    });
+  }
 
-		ref.set({
-			id: this.id,
-			question: this.question,
-			option1: this.option1,
-			option2: this.option2,
-			option3: this.option3,
-			option4: this.option4,
-			correctOption: this.correctOption,
+  addContent() {
+    this.loading = true;
 
-			subject: this.courseID,
-			user: this.uid
-		});
+    let ref: any;
+    if (this.id) {
+      ref = firebase.database().ref('questions/' + this.id);
+    } else {
+      ref = firebase.database().ref('questions').push();
+      this.id = ref.key;
+    }
 
-		firebase.database().ref('questions/' + this.id)
-			.set(this.selectedQuestions).then(value => {
-				this.router.navigate(['/' + this.backString]);
-			});*/
-		const ref = firebase.database().ref('questions').push();
+    ref
+      .set({
+        id: this.id,
+        question: this.question,
+        option1: this.option1,
+        option2: this.option2,
+        option3: this.option3,
+        option4: this.option4,
+        correctOption: this.correctOption,
+        subject: this.courseID,
+        user: this.authService.user.uid
+      })
+      .then(value => {
+        this.router.navigate(['/' + this.backString]);
+      });
+  }
 
-		console.log("ref " + ref.key);
-
-		this.id = ref.key;
-		//firebase.database().ref('questions/' + this.id)
-		ref.set({
-			id: this.id,
-			question: this.question,
-			option1: this.option1,
-			option2: this.option2,
-			option3: this.option3,
-			option4: this.option4,
-			correctOption: this.correctOption,
-
-			subject: this.courseID,
-			user: this.uid
-		}).then(value => {
-			this.router.navigate(['/' + this.backString]);
-		});
-	}
-
-	select(item: any) {
-		this.selectedQuestions[item.$key] = !this.selectedQuestions[item.$key];
-
-		if (!this.selectedQuestions[item.$key]) {
-			delete this.selectedQuestions[item.$key];
-		}
-	}
-
-	ngOnInit() {
-		this.backString = this.router.url.split('/')[1] + "/" + this.router.url.split('/')[2] + "/contents";
-
-		this.courseID = this.router.url.split('/')[2];
-		this.uid = this.authService.user.uid;
-
-		this.items = this.af.list('/questions', {
-			query: {
-				orderByChild: 'subject',
-				equalTo: this.courseID
-			}
-		});
-	}
-
+  disableButton() {
+    return !this.question || !this.option1 || !this.option2;
+  }
 }

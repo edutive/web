@@ -1,17 +1,38 @@
 <div id="dashboard-discipline" class="edu-card">
-  <label class="label">Nome</label>
-  <div class="control">
-    <input class="input" type="text" [(ngModel)]="name">
+  <div class="field">
+    <label class="label">Nome</label>
+    <div class="control">
+      <input class="input" type="text" [(ngModel)]="name">
+    </div>
   </div>
 
-  <form action="" *ngFor="let item of items | async">
-    <input type="checkbox" [name]="item.$key" [value]="item.$key" [(ngModel)]="selectedQuestions[item.$key]"> {{item.question}}
-  </form>
+  <hr />
+
+  <div class="field">
+    <label class="label">Pesquisar Questões</label>
+    <div class="control">
+      <input class="input" type="text" [(ngModel)]="search">
+    </div>
+  </div>
+
+  <div class="quiz-list columns is-multiline">
+    <div class="column is-4" *ngFor="let item of items | async | filter: search">
+      <div class="question-card">
+        <div>{{item.question}}</div>
+        <button class="button is-info is-small" (click)="addQuestion(item)" [class.is-outlined]="!selectedQuestions[item.id]">
+          <span class="icon">
+            <i [class.icon-plus]="!selectedQuestions[item.id]" [class.icon-close]="selectedQuestions[item.id]"></i>
+          </span>
+          <span>{{ selectedQuestions[item.id] ? 'Remover' : 'Adicionar' }}</span>
+        </button>
+      </div>
+    </div>
+  </div>
 
   <div class="field is-grouped is-grouped-right">
     <div class="control">
       <a routerLink="/{{backString}}" class="button is-link">Cancelar</a>
-      <button class="button is-primary" (click)="addQuiz()" [class.is-loading]="loading">Salvar</button>
+      <button class="button is-primary" (click)="addQuiz()" [class.is-loading]="loading" [disabled]="disableButton()">Salvar</button>
     </div>
   </div>
 

@@ -1,47 +1,52 @@
-<br>
 <div id="dashboard-discipline" class="edu-card">
-  <h3></h3>
-
-  <label class="label">Pergunta</label>
-  <div class="control">
-    <input class="input" type="text" [(ngModel)]="question">
+  <div class="field">
+    <label class="label">Pergunta</label>
+    <div class="control">
+      <input class="input" type="text" [(ngModel)]="question">
+    </div>
   </div>
-  <label class="label">Opção A</label>
-  <div class="control">
-    <input class="input" type="text" [(ngModel)]="option1">
+  <div class="field">
+    <label class="label">Opção A</label>
+    <div class="control">
+      <input class="input" type="text" [(ngModel)]="option1" [class.is-success]="correctOption === 'a'">
+    </div>
   </div>
-  <label class="label">Opção B</label>
-  <div class="control">
-    <input class="input" type="text" [(ngModel)]="option2">
+  <div class="field">
+    <label class="label">Opção B</label>
+    <div class="control">
+      <input class="input" type="text" [(ngModel)]="option2" [class.is-success]="correctOption === 'b'">
+    </div>
   </div>
-  <label class="label">Opção C</label>
-  <div class="control">
-    <input class="input" type="text" [(ngModel)]="option3">
+  <div class="field">
+    <label class="label">Opção C</label>
+    <div class="control">
+      <input class="input" type="text" [(ngModel)]="option3" [class.is-success]="correctOption === 'c'">
+    </div>
   </div>
-  <label class="label">Opção D</label>
-  <div class="control">
-    <input class="input" type="text" [(ngModel)]="option4">
+  <div class="field">
+    <label class="label">Opção D</label>
+    <div class="control">
+      <input class="input" type="text" [(ngModel)]="option4" [class.is-success]="correctOption === 'd'">
+    </div>
   </div>
-  <label class="label">Resposta Correta</label>
-  <div class="control">
-    <!-- <select [(ngModel)]="correctOption">
-      <option [ngValue]="a">A</option>
-      <option [ngValue]="b">B</option>
-      <option [ngValue]="c">C</option>
-      <option [ngValue]="d">D</option>
-    </select> -->
-    <input class="input" type="text" [(ngModel)]="correctOption">
+  <div class="field">
+    <label class="label">Resposta Correta</label>
+    <div class="control">
+      <div class="select">
+        <select [(ngModel)]="correctOption">
+        <option value="a">Opção A</option>
+        <option value="b">Opção B</option>
+        <option value="c">Opção C</option>
+        <option value="d">Opção D</option>
+      </select>
+      </div>
+    </div>
   </div>
-
-<!--   <form action="" *ngFor="let item of items | async">
-    <input type="checkbox" [name]="item.$key" [value]="item.$key" (change)="select(item)"> {{item.title}}
-  </form>
- -->
 
   <div class="field is-grouped is-grouped-right">
     <div class="control">
-      <button class="button is-primary" (click)="addContent()" [class.is-loading]="loading">Salvar Pergunta</button>
-      <a routerLink="/{{backString}}" class="button is-link">Voltar</a>
+      <a routerLink="/{{backString}}" class="button is-link">Cancelar</a>
+      <button class="button is-primary" (click)="addContent()" [class.is-loading]="loading" [disabled]="disableButton()">Salvar</button>
     </div>
   </div>
 

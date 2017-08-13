@@ -1,30 +1,43 @@
-<br>
-<div id="dashboard-discipline" class="edu-card" *ngIf="topic">
-  <h1>{{topic.name}}</h1>
-  <br>
-  <div *ngFor="let message of messages | async">
-   <div *ngIf="users">
-   	<p class="field is-grouped is-grouped-right">{{users[message.sender].firstname}} 
-   	{{users[message.sender].lastname}}</p>
-  	<p class="field is-grouped is-grouped-left">{{message.text}}</p>	
-   </div>
-  </div>
-
-  <br>
-
-  <div class="control">
-    <input class="input" type="text" [(ngModel)]="messageText">
-  </div>
-
-  <div class="field is-grouped is-grouped-right">
-    <div class="control">
-    	<button class="button is-primary" (click)="send()" [class.is-loading]="loading">Enviar</button>
+<section class="hero">
+  <div class="hero-head">
+    <div class="edu-card" *ngIf="topic">
+      <h1>{{topic.name}}</h1>
     </div>
   </div>
-
-  <article class="message is-danger" *ngIf="error">
-    <div class="message-body">
-      {{error}}
+  <div class="hero-body message-list">
+    <div *ngIf="topic">
+      <div *ngFor="let message of messages | async">
+        <article class="media edu-card">
+          <figure class="media-left">
+            <p class="image is-64x64">
+              <img src="http://bulma.io/images/placeholders/128x128.png">
+            </p>
+          </figure>
+          <div class="media-content">
+            <div class="content">
+              <p>
+                <strong *ngIf="users">{{users[message.sender].firstname}} {{users[message.sender].lastname}}</strong> <small>{{message.date | date}}</small>
+                <br> {{message.text}}
+              </p>
+            </div>
+          </div>
+        </article>
+        <br>
+      </div>
     </div>
-  </article>
-</div>
+  </div>
+  <div class="hero-foot">
+    <article class="media">
+      <div class="media-content">
+        <div class="field">
+          <p class="control">
+            <textarea class="textarea" placeholder="Participe da discussão!" [(ngModel)]="messageText"></textarea>
+          </p>
+        </div>
+      </div>
+      <div class="media-right">
+        <button class="button is-info" (click)="send()" [class.is-loading]="loading">Enviar</button>
+      </div>
+    </article>
+  </div>
+</section>

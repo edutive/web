@@ -1,20 +1,16 @@
-<br>
-<div id="dashboard-discipline" class="edu-card">
-  <h3></h3>
-
-  <div *ngFor="let item of items | async">	    
-  	- <a class="button is-link" [routerLink]="['category', item.id]">{{item.name}}</a>
+<a routerLink="add" class="edu-card add-forum">
+  <div class="center">
+    <i class="icon-plus"></i>
+    <span>Adicionar Categoria</span>
   </div>
+</a>
 
-  <div class="field is-grouped is-grouped-right">
-    <div class="control">
-    	<a routerLink="add-category" class="button is-primary">Adicionar Categoria</a>
+<div class="forum-list columns is-multiline">
+  <div class="column is-4" *ngFor="let item of items | async">
+    <div class="edu-card forum is-paddingless" [routerLink]="['category', item.id]">
+      <div class="forum-body">
+        <div class="name">{{item.name}}</div>
+      </div>
     </div>
   </div>
-
-  <article class="message is-danger" *ngIf="error">
-    <div class="message-body">
-      {{error}}
-    </div>
-  </article>
 </div>

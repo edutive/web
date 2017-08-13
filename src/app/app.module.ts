@@ -33,6 +33,7 @@ import { AddCategoryComponent } from './add-category/add-category.component';
 import { AddTopicComponent } from './add-topic/add-topic.component';
 import { ContentsComponent } from './contents/contents.component';
 import { AddContentComponent } from './add-content/add-content.component';
+import { FilterPipe } from './util/filter.pipe';
 
 export const firebaseConfig = {
   apiKey: 'AIzaSyAblFffPoJTp4GX3J3NK968hjm9_95PU8k',
@@ -64,6 +65,7 @@ export const firebaseConfig = {
     AddTopicComponent,
     ContentsComponent,
     AddContentComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,

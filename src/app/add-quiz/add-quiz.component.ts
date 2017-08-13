@@ -19,6 +19,8 @@ export class AddQuizComponent implements OnInit {
   quizID: string;
   courseID: string;
 
+  search: string = '';
+
   selectedQuestions = {};
 
   constructor(private af: AngularFireDatabase, private authService: AuthService, private router: Router, private route: ActivatedRoute) {}
@@ -51,6 +53,14 @@ export class AddQuizComponent implements OnInit {
     });
   }
 
+  addQuestion(question: any) {
+    if (!this.selectedQuestions[question.id]) {
+      this.selectedQuestions[question.id] = true;
+    } else {
+      delete this.selectedQuestions[question.id];
+    }
+  }
+
   addQuiz() {
     this.loading = true;
 
@@ -72,11 +82,16 @@ export class AddQuizComponent implements OnInit {
       id: this.quizID,
       name: this.name,
       subject: this.courseID,
-      user: this.authService.user.uid
+      user: this.authService.user.uid,
+      questions: Object.keys(this.selectedQuestions).length
     });
 
     firebase.database().ref('quizesQuestions/' + this.quizID).set(this.selectedQuestions).then(value => {
       this.router.navigate(['/' + this.backString]);
     });
+  }
+
+  disableButton() {
+    return !this.name || Object.keys(this.selectedQuestions).length === 0;
   }
 }
