@@ -23,7 +23,7 @@ export class ContentsComponent implements OnInit {
 
   	this.courseID = this.router.url.split('/')[2];
   	
-  	this.items = this.af.list('/contents', {
+  	this.items = this.af.list('/questions', {
       query: {
         orderByChild: 'subject',
         equalTo: this.courseID
