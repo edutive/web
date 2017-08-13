@@ -1,21 +1,17 @@
-<br>
 <div id="dashboard-discipline" class="edu-card">
-  <h3></h3>
-
   <label class="label">Nome</label>
   <div class="control">
     <input class="input" type="text" [(ngModel)]="name">
   </div>
 
- 	<form action="" *ngFor="let item of items | async">
-		<input type="checkbox" [name]="item.$key" [value]="item.$key" (change)="select(item)"> {{item.question}}
-	</form>
+  <form action="" *ngFor="let item of items | async">
+    <input type="checkbox" [name]="item.$key" [value]="item.$key" [(ngModel)]="selectedQuestions[item.$key]"> {{item.question}}
+  </form>
 
-  
-	<div class="field is-grouped is-grouped-right">
+  <div class="field is-grouped is-grouped-right">
     <div class="control">
-    <button class="button is-primary" (click)="addQuiz()" [class.is-loading]="loading">Salvar Quiz</button>
-      <a routerLink="/{{backString}}" class="button is-link">Voltar</a>
+      <a routerLink="/{{backString}}" class="button is-link">Cancelar</a>
+      <button class="button is-primary" (click)="addQuiz()" [class.is-loading]="loading">Salvar</button>
     </div>
   </div>
 
