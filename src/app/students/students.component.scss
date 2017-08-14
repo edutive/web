@@ -1,0 +1,26 @@
+@import '../../variables.scss';
+
+.student-list {
+  margin-top: 20px;
+
+  .student {
+    cursor: pointer;
+
+    .student-body {
+      padding: 20px;
+
+      .name {
+        color: $orange;
+        font-size: 20px;
+      }
+    }
+
+    &:hover {
+      .student-body {
+        .name {
+          color: $pink;
+        }
+      }
+    }
+  }
+}

@@ -17,6 +17,7 @@ import { AddCategoryComponent } from './add-category/add-category.component';
 import { AddTopicComponent } from './add-topic/add-topic.component';
 import { ContentsComponent } from './contents/contents.component';
 import { AddContentComponent } from './add-content/add-content.component';
+import { StudentsComponent } from './students/students.component';
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -35,6 +36,7 @@ const appRoutes: Routes = [
   { path: 'discipline/:id/contents', component: ContentsComponent, canActivate: [AuthGuard] },
   { path: 'discipline/:id/contents/add', component: AddContentComponent, canActivate: [AuthGuard] },
   { path: 'discipline/:id/contents/:content', component: AddContentComponent, canActivate: [AuthGuard] },
+  { path: 'discipline/:id/students', component: StudentsComponent, canActivate: [AuthGuard] },
   { path: '', component: HomeComponent, canActivate: [AuthGuard] }
 ];
 

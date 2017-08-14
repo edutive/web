@@ -29,12 +29,11 @@ export class AddDisciplineComponent implements OnInit {
     this.loading = true;
 
     this.uid = this.authService.user.uid;
+    this.id = this.generateUniqueID();
 
-    const ref = firebase.database().ref('subjects').push();
-
-    this.id = ref.key;
-
-    ref
+    firebase
+      .database()
+      .ref('subjects/' + this.id)
       .set({
         icon: this.icon.selected,
         id: this.id,
@@ -51,5 +50,34 @@ export class AddDisciplineComponent implements OnInit {
     if (event && event['value'] === true) {
       this.openIcons = false;
     }
+  }
+
+  generateUniqueID() {
+    const numbers = '0123456789';
+    const chars = 'acdefhiklmnoqrstuvwxyz';
+
+    let string_length = 3;
+    let randomstring = '';
+    let randomstring2 = '';
+
+    for (let x = 0; x < string_length; x++) {
+      let letterOrNumber = Math.floor(Math.random() * 2);
+      let rnum = Math.floor(Math.random() * chars.length);
+      randomstring += chars.substring(rnum, rnum + 1);
+    }
+
+    for (let y = 0; y < string_length; y++) {
+      let letterOrNumber2 = Math.floor(Math.random() * 2);
+      let rnum2 = Math.floor(Math.random() * numbers.length);
+      randomstring2 += numbers.substring(rnum2, rnum2 + 1);
+    }
+
+    function shuffle(o) {
+      for (let j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+      return o;
+    }
+
+    let code = shuffle((randomstring + randomstring2).split('')).join('');
+    return code;
   }
 }

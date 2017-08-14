@@ -1,0 +1,9 @@
+<div class="student-list columns is-multiline">
+  <div class="column is-4" *ngFor="let student of students">
+    <div class="edu-card student is-paddingless">
+      <div class="student-body">
+        <div class="name" *ngIf="users && users[student]">{{users[student].firstname + ' ' + users[student].lastname}}</div>
+      </div>
+    </div>
+  </div>
+</div>
