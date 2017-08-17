@@ -1,0 +1,21 @@
+.column-icon {
+  .column {
+    &:hover {
+      cursor: pointer;
+      background-color: #eee;
+      border-radius: 8px;
+    }
+  }
+}
+
+.big-icon {
+  font-size: 50px;
+}
+
+.dropdown-icon {
+  width: 600px;
+
+  .dropdown-content {
+    padding: 15px;
+  }
+}

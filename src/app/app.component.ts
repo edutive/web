@@ -45,10 +45,21 @@ export class AppComponent implements OnInit {
     }
   }
 
+  onClickOutside(event: Object) {
+    if (event && event['value'] === true) {
+      this.openMenu = false;
+    }
+  }
+
   logout() {
     this.openMenu = false;
 
     this.authService.logout();
     this.router.navigate(['/login']);
+  }
+
+  editProfile() {
+    this.openMenu = false;
+    this.router.navigate(['/profile/edit']);
   }
 }

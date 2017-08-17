@@ -1,0 +1,16 @@
+<a routerLink="add" class="edu-card add-forum">
+  <div class="center">
+    <i class="icon-plus"></i>
+    <span>Adicionar Categoria</span>
+  </div>
+</a>
+
+<div class="forum-list columns is-multiline">
+  <div class="column is-4" *ngFor="let item of items | async">
+    <div class="edu-card forum is-paddingless" [routerLink]="['category', item.id]">
+      <div class="forum-body">
+        <div class="name">{{item.name}}</div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -7,7 +7,7 @@
     <div class="user-area">
       <div class="user-photo">{{authService.user.firstname.substr(0, 1) + authService.user.lastname.substr(0, 1)}}</div>
 
-      <div class="dropdown" [class.is-active]="openMenu">
+      <div class="dropdown" [class.is-active]="openMenu" click-outside (clickOutside)="onClickOutside($event)">
         <div class="dropdown-trigger">
           <button class="button" aria-haspopup="true" aria-controls="dropdown-menu" (click)="openMenu = !openMenu">
             <span>{{authService.user.firstname + ' ' + authService.user.lastname}}</span>
@@ -18,7 +18,7 @@
         </div>
         <div class="dropdown-menu" id="dropdown-menu" role="menu">
           <div class="dropdown-content">
-            <a href="javascript:void(0)" class="dropdown-item">Editar Perfil</a>
+            <a href="javascript:void(0)" class="dropdown-item" (click)="editProfile()">Editar Perfil</a>
             <hr class="dropdown-divider">
             <a href="javascript:void(0)" class="dropdown-item" (click)="logout()">Sair</a>
           </div>

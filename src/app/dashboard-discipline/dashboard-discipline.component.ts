@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth/auth.service';
 import * as firebase from 'firebase/app';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard-discipline',
@@ -9,40 +9,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./dashboard-discipline.component.scss']
 })
 export class DashboardDisciplineComponent implements OnInit {
+  cod: string;
 
-	icon: string;
-	name: string;
-	id: any;
-	uid: any;
-
-	loading: boolean = false;
-
-  error: string;
-
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit() {
-  }
-
-  addDiscipline() {
-  	this.loading = true;
-
-  	this.icon = "notebook";
-
-  	this.uid = this.authService.user.uid;
-
-  	const ref = firebase.database().ref('subjects').push();
-
-  	this.id = ref.key;
-
-  	ref.set({
-    	icon: this.icon,
-    	id: this.id,
-    	name: this.name,
-    	user: this.uid
-    }).then(value => {
-      this.router.navigate(['/']);
-    });;
+    this.route.params.subscribe(params => {
+      this.cod = params['id'];
+    });
   }
 }
-

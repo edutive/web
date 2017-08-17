@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth/auth.service';
 import * as firebase from 'firebase/app';
 import { FirebaseListObservable, AngularFireDatabase } from 'angularfire2/database';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-quizes',
@@ -10,25 +10,24 @@ import { Router } from '@angular/router';
   styleUrls: ['./quizes.component.scss']
 })
 export class QuizesComponent implements OnInit {
+  items: FirebaseListObservable<any>;
 
-	backString : any;
-
-	items: FirebaseListObservable<any>;
-	courseID: any;
-
-  constructor(private af : AngularFireDatabase, private authService: AuthService, private router: Router) {}
+  constructor(private af: AngularFireDatabase, private authService: AuthService, private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit() {
-  	this.backString = this.router.url.split('/')[1] + "/" + this.router.url.split('/')[2];
-
-  	this.courseID = this.router.url.split('/')[2];
-  	
-  	this.items = this.af.list('/quizes', {
-      query: {
-        orderByChild: 'subject',
-        equalTo: this.courseID
-      }
+    this.route.params.subscribe(params => {
+      this.items = this.af.list('/quizes', {
+        query: {
+          orderByChild: 'subject',
+          equalTo: params['id']
+        }
+      });
     });
   }
 
+  openQuiz(quiz: any) {
+    this.route.params.subscribe(params => {
+      this.router.navigate(['/discipline/', params['id'], 'quizes', quiz.id]);
+    });
+  }
 }

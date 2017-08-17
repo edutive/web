@@ -1,20 +1,30 @@
-<br>
-<div id="dashboard-discipline" class="edu-card">
-  <h3></h3>
-  
-  <div *ngFor="let item of items | async">	    
-  	- <a class="button is-link">{{item.name}}</a>
+<a routerLink="add" class="edu-card add-quiz">
+  <div class="center">
+    <i class="icon-plus"></i>
+    <span>Adicionar Quiz</span>
   </div>
-  <div class="field is-grouped is-grouped-right">
-    <div class="control">
-    	<a routerLink="add-quiz" class="button is-primary">Adicionar Quiz</a>
-      <a routerLink="/{{backString}}" class="button is-link">Voltar</a>
-    </div>
-  </div>
+</a>
 
-  <article class="message is-danger" *ngIf="error">
-    <div class="message-body">
-      {{error}}
+<div class="quiz-list columns is-multiline">
+  <div class="column is-4" *ngFor="let item of items | async">
+    <div class="edu-card quiz is-paddingless" (click)="openQuiz(item)">
+      <div class="quiz-body">
+        <div class="name">{{item.name}}</div>
+        <div class="quiz-icons">
+          <div class="icon">
+            <i class="icon-people"></i>
+            <span>10/25</span>
+          </div>
+          <div class="icon">
+            <i class="icon-question"></i>
+            <span>10</span>
+          </div>
+          <div class="icon">
+            <i class="icon-flag"></i>
+            <span>10</span>
+          </div>
+        </div>
+      </div>
     </div>
-  </article>
+  </div>
 </div>

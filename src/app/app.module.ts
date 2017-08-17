@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
+import { ClickOutsideDirective } from './util/click-outside.directive';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AngularFireModule } from 'angularfire2';
@@ -20,10 +21,21 @@ import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
 import { AddDisciplineComponent } from './add-discipline/add-discipline.component';
 import { EditDisciplineComponent } from './edit-discipline/edit-discipline.component';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { DashboardDisciplineComponent } from './dashboard-discipline/dashboard-discipline.component';
 import { QuizesComponent } from './quizes/quizes.component';
 import { AddQuizComponent } from './add-quiz/add-quiz.component';
 import { ListDisciplineComponent } from './list-discipline/list-discipline.component';
+import { IconSelectorComponent } from './add-discipline/icon-selector/icon-selector.component';
+import { ForumComponent } from './forum/forum.component';
+import { CategoryComponent } from './category/category.component';
+import { TopicComponent } from './topic/topic.component';
+import { AddCategoryComponent } from './add-category/add-category.component';
+import { AddTopicComponent } from './add-topic/add-topic.component';
+import { ContentsComponent } from './contents/contents.component';
+import { AddContentComponent } from './add-content/add-content.component';
+import { FilterPipe } from './util/filter.pipe';
+import { StudentsComponent } from './students/students.component';
 
 export const firebaseConfig = {
   apiKey: 'AIzaSyAblFffPoJTp4GX3J3NK968hjm9_95PU8k',
@@ -35,7 +47,30 @@ export const firebaseConfig = {
 };
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, RegisterComponent, HomeComponent, AddDisciplineComponent, DashboardDisciplineComponent, QuizesComponent, AddQuizComponent, EditDisciplineComponent, ListDisciplineComponent],
+  declarations: [
+    AppComponent,
+    LoginComponent,
+    RegisterComponent,
+    HomeComponent,
+    AddDisciplineComponent,
+    DashboardDisciplineComponent,
+    QuizesComponent,
+    AddQuizComponent,
+    EditDisciplineComponent,
+    ListDisciplineComponent,
+    IconSelectorComponent,
+    ClickOutsideDirective,
+    ForumComponent,
+    EditProfileComponent,
+    CategoryComponent,
+    TopicComponent,
+    AddCategoryComponent,
+    AddTopicComponent,
+    ContentsComponent,
+    AddContentComponent,
+    FilterPipe,
+    StudentsComponent
+  ],
   imports: [
     BrowserModule,
     FormsModule,

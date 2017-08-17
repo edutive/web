@@ -1,0 +1,16 @@
+<a routerLink="add" class="edu-card add-content">
+  <div class="center">
+    <i class="icon-plus"></i>
+    <span>Adicionar Questão</span>
+  </div>
+</a>
+
+<div class="content-list columns is-multiline">
+  <div class="column is-4" *ngFor="let item of items | async">
+    <div class="edu-card content is-paddingless" (click)="openContent(item)">
+      <div class="content-body">
+        <div class="name">{{item.question}}</div>
+      </div>
+    </div>
+  </div>
+</div>

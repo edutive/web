@@ -52,6 +52,10 @@ export class AuthService {
       });
   }
 
+  updateUser(user) {
+    console.log('Dados de usuário: ',user);
+  }
+
   getUser(uid: string, callback: any) {
     firebase.database().ref('users/' + uid).once('value', snapshot => {
       callback(snapshot.val());
