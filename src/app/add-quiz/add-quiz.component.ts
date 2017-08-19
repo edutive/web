@@ -78,6 +78,12 @@ export class AddQuizComponent implements OnInit {
       }
     });
 
+    this.route.params.subscribe(params => {
+      firebase.database().ref('subjects/' + params['id']).once('value', subjectSnapshop => {
+        firebase.database().ref('subjects/' + params['id'] + '/quizes').set(subjectSnapshop.val().quizes + 1);
+      });
+    });
+
     ref.set({
       id: this.quizID,
       name: this.name,
