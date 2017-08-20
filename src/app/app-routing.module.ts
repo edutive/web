@@ -18,10 +18,14 @@ import { AddTopicComponent } from './add-topic/add-topic.component';
 import { ContentsComponent } from './contents/contents.component';
 import { AddContentComponent } from './add-content/add-content.component';
 import { StudentsComponent } from './students/students.component';
+import { AddMessageComponent } from './add-message/add-message.component';
+import { MessagesComponent } from './messages/messages.component';
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'message/add', component: AddMessageComponent, canActivate: [AuthGuard] },
+  { path: 'messages/:id', component: MessagesComponent, canActivate: [AuthGuard] },
   { path: 'discipline/add', component: AddDisciplineComponent, canActivate: [AuthGuard] },
   { path: 'discipline/:id', component: DashboardDisciplineComponent, canActivate: [AuthGuard] },
   { path: 'discipline/:id/quizes', component: QuizesComponent, canActivate: [AuthGuard] },
@@ -30,9 +34,9 @@ const appRoutes: Routes = [
   { path: 'discipline/:id/edit', component: EditDisciplineComponent, canActivate: [AuthGuard] },
   { path: 'discipline/:id/forum', component: ForumComponent, canActivate: [AuthGuard] },
   { path: 'discipline/:id/forum/add', component: AddCategoryComponent, canActivate: [AuthGuard] },
-  { path: 'discipline/:id/forum/category/:id', component: CategoryComponent, canActivate: [AuthGuard] },
-  { path: 'discipline/:id/forum/category/:id/add', component: AddTopicComponent, canActivate: [AuthGuard] },
-  { path: 'discipline/:id/forum/category/:id/topic/:id', component: TopicComponent, canActivate: [AuthGuard] },
+  { path: 'discipline/:id/forum/category/:category', component: CategoryComponent, canActivate: [AuthGuard] },
+  { path: 'discipline/:id/forum/category/:category/add', component: AddTopicComponent, canActivate: [AuthGuard] },
+  { path: 'discipline/:id/forum/category/:category/topic/:topic', component: TopicComponent, canActivate: [AuthGuard] },
   { path: 'discipline/:id/contents', component: ContentsComponent, canActivate: [AuthGuard] },
   { path: 'discipline/:id/contents/add', component: AddContentComponent, canActivate: [AuthGuard] },
   { path: 'discipline/:id/contents/:content', component: AddContentComponent, canActivate: [AuthGuard] },

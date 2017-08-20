@@ -19,17 +19,38 @@
         <div class="discipline-icons">
           <div class="icon">
             <i class="icon-people"></i>
-            <span>10</span>
+            <span>{{item.students}}</span>
           </div>
           <div class="icon">
             <i class="icon-question"></i>
-            <span>10</span>
+            <span>{{item.quizes}}</span>
           </div>
           <div class="icon">
             <i class="icon-envelope-open"></i>
-            <span>10</span>
+            <span>{{item.forum}}</span>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<a routerLink="/message/add" class="edu-card add-discipline">
+  <div class="center">
+    <i class="icon-plus"></i>
+    <span>Adicionar Message</span>
+  </div>
+</a>
+
+<div class="discipline-list columns is-multiline">
+  <div class="column is-4" *ngFor="let message of messages | async" (click)="openChat(message.chat)">
+    <div class="edu-card discipline is-paddingless">
+      <div class="discipline-top">
+        <i class="icon-speech"></i>
+        <span class="name" *ngIf="users">{{users[message.user].firstname}} {{users[message.user].lastname}}</span>
+      </div>
+      <div class="discipline-body">
+        <div>{{message.lastMessage}}</div>
       </div>
     </div>
   </div>
