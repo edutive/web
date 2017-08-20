@@ -1,0 +1,18 @@
+<div id="dashboard-discipline" class="edu-card">	
+	<div class="field">
+    <label class="label">Pesquisar Usuário</label>
+    <div class="control">
+      <input class="input" type="text" [(ngModel)]="search">
+    </div>
+  </div>
+
+  <div class="quiz-list columns is-multiline">
+    <div class="column is-4" *ngFor="let item of items | async | filter: search">
+    	<a (click)="addChat(item.uid)">
+	      <div class="question-card">
+	        <div class="question">{{item.firstname}} {{item.lastname}}</div>
+	      </div>
+      </a>
+    </div>
+  </div>
+</div>
