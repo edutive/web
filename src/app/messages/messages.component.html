@@ -5,7 +5,7 @@
     </div>
   </div>
   <div class="hero-body message-list">
-    <div *ngIf="userID">
+    <div *ngIf="messages">
       <div *ngFor="let message of messages | async">
         <article class="media edu-card">
           <figure class="media-left">
