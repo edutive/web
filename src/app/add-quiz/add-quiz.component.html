@@ -18,7 +18,7 @@
   <div class="quiz-list columns is-multiline">
     <div class="column is-4" *ngFor="let item of items | async | filter: search">
       <div class="question-card">
-        <div>{{item.question}}</div>
+        <div class="question">{{item.question}}</div>
         <button class="button is-info is-small" (click)="addQuestion(item)" [class.is-outlined]="!selectedQuestions[item.id]">
           <span class="icon">
             <i [class.icon-plus]="!selectedQuestions[item.id]" [class.icon-close]="selectedQuestions[item.id]"></i>

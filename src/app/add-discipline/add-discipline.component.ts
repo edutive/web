@@ -39,7 +39,11 @@ export class AddDisciplineComponent implements OnInit {
         id: this.id,
         name: this.name,
         user: this.uid,
-        status: 'current'
+        status: 'current',
+        quizes: 0,
+        training: 0,
+        forum: 0,
+        students: 0
       })
       .then(value => {
         this.router.navigate(['/']);

@@ -19,10 +19,14 @@ import { AddTopicComponent } from './add-topic/add-topic.component';
 import { ContentsComponent } from './contents/contents.component';
 import { AddContentComponent } from './add-content/add-content.component';
 import { StudentsComponent } from './students/students.component';
+import { AddMessageComponent } from './add-message/add-message.component';
+import { MessagesComponent } from './messages/messages.component';
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'message/add', component: AddMessageComponent, canActivate: [AuthGuard] },
+  { path: 'messages/:id', component: MessagesComponent, canActivate: [AuthGuard] },
   { path: 'discipline/add', component: AddDisciplineComponent, canActivate: [AuthGuard] },
   { path: 'discipline/:id', component: DashboardDisciplineComponent, canActivate: [AuthGuard] },
   { path: 'discipline/:id/quizes', component: QuizesComponent, canActivate: [AuthGuard] },
