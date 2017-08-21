@@ -17,6 +17,7 @@ export class AddContentComponent implements OnInit {
 
   id: any;
   question: any;
+  content: any;
   option1: any;
   option2: any;
   option3: any;
@@ -39,6 +40,7 @@ export class AddContentComponent implements OnInit {
         this.id = param['content'];
         this.af.object('/questions/' + param['content']).subscribe(question => {
           this.question = question.question;
+          this.content = question.content;
           this.option1 = question.option1;
           this.option2 = question.option2;
           this.option3 = question.option3;
@@ -71,6 +73,7 @@ export class AddContentComponent implements OnInit {
       .set({
         id: this.id,
         question: this.question,
+        content: this.content,
         option1: this.option1,
         option2: this.option2,
         option3: this.option3 ? this.option3 : null,

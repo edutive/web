@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 import { ClickOutsideDirective } from './util/click-outside.directive';
 import { AppRoutingModule } from './app-routing.module';
@@ -80,6 +81,7 @@ export const firebaseConfig = {
     FormsModule,
     HttpModule,
     AppRoutingModule,
+    NgxChartsModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
     AngularFireAuthModule

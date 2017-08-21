@@ -6,6 +6,12 @@
     </div>
   </div>
   <div class="field">
+    <label class="label">Assunto</label>
+    <div class="control">
+      <input class="input" type="text" [(ngModel)]="content">
+    </div>
+  </div>
+  <div class="field">
     <label class="label">Opção A</label>
     <div class="control">
       <input class="input" type="text" [(ngModel)]="option1" [class.is-success]="correctOption === 'a'">

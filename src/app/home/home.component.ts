@@ -33,13 +33,7 @@ export class HomeComponent implements OnInit {
     firebase.database().ref('users').once('value', snapshot => {
       this.users = snapshot.val();
     });
-    // , {
-    //   query: {
-    //     orderByKey: true,
-    //     equalTo: this.uid
-    //   }
-    // })
-    console.log(this.uid)
+    console.log(this.uid);
   }
 
   openDiscipline(id: string) {
