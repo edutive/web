@@ -20,20 +20,16 @@ export class EditProfileComponent implements OnInit {
 
   loading: boolean = false;
 
-  constructor(private af: AngularFireDatabase,public authService: AuthService, private router: Router, private route: ActivatedRoute) {}
+  constructor(private af: AngularFireDatabase, public authService: AuthService, private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit() {
-      this.user = JSON.parse(localStorage.getItem('user'));
+      this.user = this.authService.user;
   }
 
   update(user) {
-    // this.loading = true;
-    this.authService.updateUser(user);
-
-    //TODO
-    //Implementar o Update no AuthService
-
+    this.loading = true;
+    this.authService.updateUser(this.user, () => {
+      this.router.navigate(['/']);
+    });
   }
-
-
 }
