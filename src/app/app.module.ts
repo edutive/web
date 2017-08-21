@@ -21,6 +21,7 @@ import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
 import { AddDisciplineComponent } from './add-discipline/add-discipline.component';
 import { EditDisciplineComponent } from './edit-discipline/edit-discipline.component';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { DashboardDisciplineComponent } from './dashboard-discipline/dashboard-discipline.component';
 import { QuizesComponent } from './quizes/quizes.component';
 import { AddQuizComponent } from './add-quiz/add-quiz.component';
@@ -62,6 +63,7 @@ export const firebaseConfig = {
     IconSelectorComponent,
     ClickOutsideDirective,
     ForumComponent,
+    EditProfileComponent,
     CategoryComponent,
     TopicComponent,
     AddCategoryComponent,

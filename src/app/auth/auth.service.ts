@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFireDatabase } from 'angularfire2/database';
 import * as firebase from 'firebase/app';
 
 import { Observable } from 'rxjs/Observable';
@@ -9,7 +10,7 @@ import { Observable } from 'rxjs/Observable';
 export class AuthService {
   user: any;
 
-  constructor(private firebaseAuth: AngularFireAuth) {}
+  constructor(private firebaseAuth: AngularFireAuth, private af: AngularFireDatabase) {}
 
   signup(email: string, password: string, callback: any) {
     this.firebaseAuth.auth
@@ -49,6 +50,17 @@ export class AuthService {
       })
       .catch(error => {
         callback(null, error);
+      });
+  }
+
+  updateUser(user: any, callback: any) {
+    this.af
+      .object('users/' + user.uid)
+      .update(user)
+      .then(() => {
+        callback();
+      }).catch(error => {
+        console.log(error);
       });
   }
 

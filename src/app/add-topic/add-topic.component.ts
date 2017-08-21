@@ -4,12 +4,14 @@ import * as firebase from 'firebase/app';
 import { FirebaseListObservable, AngularFireDatabase } from 'angularfire2/database';
 import { Router, ActivatedRoute } from '@angular/router';
 
+
 @Component({
   selector: 'app-add-topic',
   templateUrl: './add-topic.component.html',
   styleUrls: ['./add-topic.component.scss']
 })
 export class AddTopicComponent implements OnInit {
+
   loading: boolean = false;
 
   backString: any;

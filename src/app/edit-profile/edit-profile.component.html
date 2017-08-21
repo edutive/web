@@ -1,0 +1,35 @@
+<div id="login" class="edu-card">
+
+  <h1 class="label">Editar Perfil</h1>
+  <br>
+  <div >
+    <div class="field">
+      <label class="label">Nome</label>
+      <div class="control">
+        <input class="input" type="text" [(ngModel)]="user.firstname" >
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">Sobrenome</label>
+      <div class="control">
+        <input class="input" type="text" [(ngModel)]="user.lastname">
+      </div>
+    </div>
+    
+    <div class="field is-grouped is-grouped-right">
+      <div class="control">
+        <a routerLink="/" class="button is-link">Voltar</a>
+      </div>
+      <div class="control">
+        <button class="button is-primary" (click)="update(user)" [class.is-loading]="loading">Atualizar</button>
+      </div>
+    </div>
+
+    <article class="message is-danger" *ngIf="error">
+      <div class="message-body">
+        {{error}}
+      </div>
+    </article>
+  </div>
+</div>

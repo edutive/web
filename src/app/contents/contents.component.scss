@@ -29,16 +29,6 @@
       .name {
         color: $orange;
         font-size: 20px;
-
-        display: block;
-        display: -webkit-box;
-        max-width: 400px;
-        height: 120px;
-        margin: 0 auto;
-        -webkit-line-clamp: 4;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-        text-overflow: ellipsis;
       }
     }
 
