@@ -55,10 +55,4 @@
       <button class="button is-primary" (click)="addContent()" [class.is-loading]="loading" [disabled]="disableButton()">Salvar</button>
     </div>
   </div>
-
-  <article class="message is-danger" *ngIf="error">
-    <div class="message-body">
-      {{error}}
-    </div>
-  </article>
 </div>

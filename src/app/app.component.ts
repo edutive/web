@@ -19,7 +19,7 @@ export class AppComponent implements OnInit {
   disciplineID: string;
   discipline: Discipline;
 
-  constructor(private authService: AuthService, private af: AngularFireDatabase, private router: Router, private route: ActivatedRoute) {}
+  constructor(public authService: AuthService, private af: AngularFireDatabase, private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit() {
     this.openMenu = false;
